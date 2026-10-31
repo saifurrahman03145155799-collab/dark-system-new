@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DARK SYSTEM</title>
+<style>
+*{box-sizing:border-box}
+body{background:#020909;color:#00ff99;font-family:monospace;margin:0;padding:15px}
+h1{text-align:center;font-size:42px;text-shadow:0 0 18px #00ff99}
+.panel{border:1px solid #00ff99;padding:15px;margin:12px 0;border-radius:10px;box-shadow:0 0 12px #004d33;background:#031311}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.number{font-size:28px;color:#00ffff}
+button{background:#003322;color:#00ff99;border:1px solid #00ff99;padding:14px;width:100%;margin-top:8px;font-weight:bold}
+#log{min-height:120px;line-height:1.8;white-space:pre-line}
+.active{color:#00ffff;text-shadow:0 0 12px #00ffff}
+</style>
+</head>
+<body>
+<h1>DARK SYSTEM</h1>
+<div class="panel">SYSTEM STATUS: <span id="status">ONLINE</span></div>
+<div class="grid">
+<div class="panel">CPU<div class="number" id="cpu">42%</div></div>
+<div class="panel">MEMORY<div class="number" id="mem">68%</div></div>
+<div class="panel">SECURITY<div class="number">ACTIVE</div></div>
+<div class="panel">NETWORK<div class="number">ONLINE</div></div>
+</div>
+<div class="panel">
+<h3>LIVE SYSTEM LOG</h3>
+<div id="log">DARK SYSTEM SYSTEM STARTED...</div>
+</div>
+<div class="panel">
+<button onclick="mission()">START MOVIE MISSION</button>
+<button onclick="resetPanel()">RESET PANEL</button>
+</div>
+<script>
+let timer=null;
+let messages=[
+"Initializing movie simulation...",
+"Virtual system scan started...",
+"Checking fictional security...",
+"Loading digital interface...",
+"Connecting imaginary network...",
+"All movie systems online...",
+"Simulation running successfully..."
+];
+function mission(){
+if(timer)clearInterval(timer);
+let i=0;
+document.getElementById("status").innerText="MISSION ACTIVE";
+document.getElementById("status").className="active";
+document.getElementById("log").innerText=">>> MOVIE MISSION STARTED";
+timer=setInterval(()=>{
+document.getElementById("log").innerText+="\n>>> "+messages[i];
+document.getElementById("log").scrollTop=9999;
+i=(i+1)%messages.length;
+},1200);
+}
+function resetPanel(){
+if(timer)clearInterval(timer);
+timer=null;
+document.getElementById("status").innerText="ONLINE";
+document.getElementById("status").className="";
+document.getElementById("log").innerText="DARK SYSTEM SYSTEM ONLINE";
+}
+setInterval(()=>{
+document.getElementById("cpu").innerText=Math.floor(Math.random()*80+10)+"%";
+document.getElementById("mem").innerText=Math.floor(Math.random()*70+20)+"%";
+},1500);
+</script>
+</body>
+</html>
