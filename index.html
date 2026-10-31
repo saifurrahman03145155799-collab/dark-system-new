@@ -1,70 +1,149 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>DARK SYSTEM</title>
 <style>
 *{box-sizing:border-box}
-body{background:#020909;color:#00ff99;font-family:monospace;margin:0;padding:15px}
-h1{text-align:center;font-size:42px;text-shadow:0 0 18px #00ff99}
-.panel{border:1px solid #00ff99;padding:15px;margin:12px 0;border-radius:10px;box-shadow:0 0 12px #004d33;background:#031311}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.number{font-size:28px;color:#00ffff}
-button{background:#003322;color:#00ff99;border:1px solid #00ff99;padding:14px;width:100%;margin-top:8px;font-weight:bold}
-#log{min-height:120px;line-height:1.8;white-space:pre-line}
-.active{color:#00ffff;text-shadow:0 0 12px #00ffff}
+:root{--green:#00ff9c;--cyan:#00eaff;--pink:#ff38c8;--purple:#a855ff;--yellow:#ffe600}
+body{
+ margin:0;padding:16px;font-family:Arial,sans-serif;color:white;
+ background:radial-gradient(ellipse at top,#14233b 0%,#070b18 48%,#02040a 100%);
+ min-height:100vh;overflow-x:hidden
+}
+body:before{
+ content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;
+ background-image:linear-gradient(#00ff9c18 1px,transparent 1px),linear-gradient(90deg,#00ff9c18 1px,transparent 1px);
+ background-size:35px 35px
+}
+header{text-align:center;padding:25px 5px 20px;position:relative}
+h1{font-size:clamp(29px,8vw,48px);letter-spacing:5px;margin:0;
+ color:#fff;text-shadow:0 0 8px #00ff9c,0 0 22px #00eaff,0 0 38px #a855ff}
+.subtitle{font-size:10px;letter-spacing:4px;color:#00ffcf;margin-top:12px}
+.cross{color:#ff38c8;text-shadow:0 0 12px #ff38c8;font-size:18px}
+.rainbow{height:3px;border-radius:8px;margin:15px auto;
+ background:linear-gradient(90deg,red,#ff8c00,#ffe600,#00ff70,#00d9ff,#7655ff,#ff38c8);
+ box-shadow:0 0 12px #a855ff}
+.panel{
+ position:relative;margin:17px 0;padding:2px;border-radius:17px;
+ background:linear-gradient(110deg,#ff3030,#ffae00,#eaff00,#00ff79,#00dfff,#7555ff,#ff38c8);
+ background-size:300% 300%;animation:borderflow 7s linear infinite;
+ box-shadow:0 0 15px #00eaff25,0 0 25px #ff38c825
+}
+@keyframes borderflow{0%{background-position:0 50%}100%{background-position:300% 50%}}
+.inner{background:linear-gradient(145deg,#101a2c,#090d19);border-radius:15px;padding:17px}
+h2{font-size:13px;letter-spacing:3px;color:#fff;margin:5px 0 15px;text-shadow:0 0 9px #00eaff}
+.status{color:#00ff9c;font-size:12px;letter-spacing:1px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.metric{border-radius:13px;padding:15px 10px;text-align:center;
+ background:linear-gradient(145deg,#182b3d,#101326);border:1px solid #00eaff66;
+ box-shadow:inset 0 0 15px #00eaff12,0 0 10px #00eaff20}
+.metric:nth-child(2){border-color:#ff38c8}
+.metric:nth-child(3){border-color:#a855ff}
+.metric:nth-child(4){border-color:#ffe600}
+.metric small{font-size:10px;letter-spacing:2px;color:#fff}
+.num{font-size:clamp(22px,6vw,31px);font-weight:bold;margin-top:12px;color:#00ff9c;text-shadow:0 0 12px #00ff9c}
+.metric:nth-child(2) .num{color:#ff65d6;text-shadow:0 0 12px #ff38c8}
+.metric:nth-child(3) .num{color:#ba8aff;text-shadow:0 0 12px #a855ff}
+.metric:nth-child(4) .num{color:#ffe76a;text-shadow:0 0 12px #ffe600}
+.friend{text-align:center;padding:20px 12px}
+.frame{width:175px;height:175px;margin:18px auto;padding:5px;border-radius:50%;
+ background:conic-gradient(red,orange,yellow,#00ff80,#00eaff,#7655ff,#ff38c8,red);
+ box-shadow:0 0 18px #00eaff,0 0 35px #ff38c855;animation:spin 8s linear infinite}
+.photo{width:100%;height:100%;border:4px solid #101426;border-radius:50%;
+ background:radial-gradient(circle,#263c5c,#101426);
+ display:flex;align-items:center;justify-content:center;color:#00eaff;font-size:12px;
+ text-shadow:0 0 10px #00eaff;animation:spinback 8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinback{to{transform:rotate(-360deg)}}
+.name{font-size:32px;letter-spacing:6px;color:white;text-shadow:0 0 8px #ff38c8,0 0 20px #00eaff}
+.quote{font-size:13px;line-height:1.9;color:#fff}
+.friendline{font-size:10px;letter-spacing:2px;color:#00ffcf}
+#log{min-height:95px;white-space:pre-line;line-height:1.9;color:#00ff9c;font-size:12px;text-shadow:0 0 8px #00ff9c}
+button{width:100%;padding:14px;margin:7px 0;border:1px solid #00eaff;
+ border-radius:9px;background:linear-gradient(90deg,#142d45,#272044);
+ color:white;font-weight:bold;letter-spacing:2px;text-shadow:0 0 8px #00eaff;
+ box-shadow:0 0 12px #00eaff44}
+button:active{background:#174c54}
+footer{text-align:center;color:#9c9cb8;font-size:10px;letter-spacing:2px;padding:25px 5px}
 </style>
 </head>
 <body>
+<header>
+<div class="cross">✣ ✦ ✣ ✦ ✣</div>
 <h1>DARK SYSTEM</h1>
-<div class="panel">SYSTEM STATUS: <span id="status">ONLINE</span></div>
+<div class="subtitle">NEON RAINBOW INTERFACE</div>
+<div class="rainbow"></div>
+</header>
+
+<div class="panel"><div class="inner">
+<h2>✣ SYSTEM STATUS</h2>
+<div class="status">● ONLINE — MOVIE SIMULATION</div>
+<div class="rainbow"></div>
+<div class="subtitle">VIRTUAL CONTROL CENTER</div>
+</div></div>
+
 <div class="grid">
-<div class="panel">CPU<div class="number" id="cpu">42%</div></div>
-<div class="panel">MEMORY<div class="number" id="mem">68%</div></div>
-<div class="panel">SECURITY<div class="number">ACTIVE</div></div>
-<div class="panel">NETWORK<div class="number">ONLINE</div></div>
+<div class="panel"><div class="inner metric">
+<small>CPU USAGE</small><div class="num" id="cpu">42%</div>
+</div></div>
+<div class="panel"><div class="inner metric">
+<small>MEMORY</small><div class="num" id="mem">68%</div>
+</div></div>
+<div class="panel"><div class="inner metric">
+<small>SECURITY</small><div class="num">ACTIVE</div>
+</div></div>
+<div class="panel"><div class="inner metric">
+<small>NETWORK</small><div class="num">ONLINE</div>
+</div></div>
 </div>
-<div class="panel">
-<h3>LIVE SYSTEM LOG</h3>
-<div id="log">DARK SYSTEM SYSTEM STARTED...</div>
-</div>
-<div class="panel">
-<button onclick="mission()">START MOVIE MISSION</button>
-<button onclick="resetPanel()">RESET PANEL</button>
-</div>
+
+<div class="panel"><div class="inner friend">
+<div class="cross">✣ SPECIAL FRIEND PROFILE ✣</div>
+<div class="frame"><div class="photo">PHOTO COMING SOON</div></div>
+<div class="name">ALADAD</div>
+<p class="quote">Some friends make life more beautiful just by being part of it.<br><br>
+دوستی ایک خوبصورت رشتہ ہے، جو عزت، اعتماد اور اچھی یادوں سے بنتا ہے۔</p>
+<div class="friendline">RESPECT ✦ TRUST ✦ FRIENDSHIP</div>
+</div></div>
+
+<div class="panel"><div class="inner">
+<h2>✣ LIVE SYSTEM LOG</h2>
+<div id="log">DARK SYSTEM INITIALIZED...<br>VIRTUAL INTERFACE READY...</div>
+<button onclick="mission()">▶ START MOVIE MISSION</button>
+<button onclick="resetPanel()">↻ RESET PANEL</button>
+</div></div>
+
+<footer>✦ DARK SYSTEM ✦ ENTERTAINMENT SIMULATION ✦</footer>
+
 <script>
 let timer=null;
-let messages=[
-"Initializing movie simulation...",
-"Virtual system scan started...",
-"Checking fictional security...",
-"Loading digital interface...",
-"Connecting imaginary network...",
-"All movie systems online...",
-"Simulation running successfully..."
+const messages=[
+"RAINBOW INTERFACE ACTIVATED...",
+"VIRTUAL SYSTEM SCAN COMPLETE...",
+"NEON SECURITY STATUS: ACTIVE...",
+"ALADAD PROFILE LOADED...",
+"MOVIE SIMULATION RUNNING...",
+"ALL VISUAL PANELS ONLINE..."
 ];
 function mission(){
-if(timer)clearInterval(timer);
-let i=0;
-document.getElementById("status").innerText="MISSION ACTIVE";
-document.getElementById("status").className="active";
-document.getElementById("log").innerText=">>> MOVIE MISSION STARTED";
-timer=setInterval(()=>{
-document.getElementById("log").innerText+="\n>>> "+messages[i];
-document.getElementById("log").scrollTop=9999;
-i=(i+1)%messages.length;
-},1200);
+ if(timer)clearInterval(timer);
+ let i=0;
+ document.getElementById("log").innerText="✣ MOVIE MISSION STARTED";
+ timer=setInterval(()=>{
+  document.getElementById("log").innerText+="\n✦ "+messages[i];
+  i=(i+1)%messages.length;
+ },1200);
 }
 function resetPanel(){
-if(timer)clearInterval(timer);
-timer=null;
-document.getElementById("status").innerText="ONLINE";
-document.getElementById("status").className="";
-document.getElementById("log").innerText="DARK SYSTEM SYSTEM ONLINE";
+ if(timer)clearInterval(timer);
+ timer=null;
+ document.getElementById("log").innerText="DARK SYSTEM ONLINE\nVIRTUAL PANELS READY...";
 }
 setInterval(()=>{
-document.getElementById("cpu").innerText=Math.floor(Math.random()*80+10)+"%";
-document.getElementById("mem").innerText=Math.floor(Math.random()*70+20)+"%";
+ document.getElementById("cpu").innerText=Math.floor(Math.random()*80+10)+"%";
+ document.getElementById("mem").innerText=Math.floor(Math.random()*70+20)+"%";
 },1500);
 </script>
 </body>
