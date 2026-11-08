@@ -149,3 +149,194 @@ setInterval(()=>{
 </script>
 </body>
 </html>
+میں آپ کا مطلوبہ کوڈ تیار کر رہا ہوں جس میں تمام پیکجز، واٹس ایپ لنکس، اور کوڈ کاپی کرنے کا بٹن شامل ہے۔ یہ رہا مکمل اور ریسپانسو کوڈ۔ اس میں تمام پیکیجز، مناسب قیمتیں، واٹس ایپ لنکس، اور ایک بٹن شامل ہے جس سے آپ سارا کوڈ ایک ساتھ کاپی کر سکتے ہیں۔
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KK Gaming Live - PUBG UC Store</title>
+    <style>
+        :root {
+            --bg-color: #0f1923;
+            --card-bg: #1f2b3e;
+            --accent-color: #f3af19;
+            --text-color: #ffffff;
+            --wa-color: #25d366;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: var(--accent-color);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #a0aab8;
+        }
+
+        .actions-bar {
+            margin-bottom: 25px;
+        }
+
+        .copy-code-btn {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .copy-code-btn:hover {
+            background-color: #2563eb;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 2px solid #2a3a52;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .uc-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #e2e8f0;
+        }
+
+        .btn-wa {
+            display: inline-block;
+            background-color: var(--wa-color);
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: opacity 0.2s;
+        }
+
+        .btn-wa:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>KK Gaming Live - PUBG UC Store</h1>
+        <p>اپنا مطلوبہ پیکج منتخب کریں اور واٹس ایپ پر آرڈر دیں</p>
+    </header>
+
+    <div class="actions-bar">
+        <button class="copy-code-btn" onclick="copySourceCode()">سارا کوڈ کاپی کریں (Copy Code)</button>
+    </div>
+
+    <div class="container">
+        <!-- 30 UC -->
+        <div class="card">
+            <div class="uc-title">30 UC</div>
+            <div class="price">قیمت: 160 PKR</div>
+            <a href="https://wa.me/923001234567?text=السلام علیکم! مجھے 30 UC خریدنی ہے۔" target="_blank" class="btn-wa">واٹس ایپ پر خریدیں</a>
+        </div>
+
+        <!-- 60 UC -->
+        <div class="card">
+            <div class="uc-title">60 UC</div>
+            <div class="price">قیمت: 310 PKR</div>
+            <a href="https://wa.me/923001234567?text=السلام علیکم! مجھے 60 UC خریدنی ہے۔" target="_blank" class="btn-wa">واٹس ایپ پر خریدیں</a>
+        </div>
+
+        <!-- 120 UC -->
+        <div class="card">
+            <div class="uc-title">120 UC</div>
+            <div class="price">قیمت: 620 PKR</div>
+            <a href="https://wa.me/923001234567?text=السلام علیکم! مجھے 120 UC خریدنی ہے۔" target="_blank" class="btn-wa">واٹس ایپ پر خریدیں</a>
+        </div>
+
+        <!-- 300 UC -->
+        <div class="card">
+            <div class="uc-title">300 UC</div>
+            <div class="price">قیمت: 1550 PKR</div>
+            <a href="https://wa.me/923001234567?text=السلام علیکم! مجھے 300 UC خریدنی ہے۔" target="_blank" class="btn-wa">واٹس ایپ پر خریدیں</a>
+        </div>
+
+        <!-- 660 UC -->
+        <div class="card">
+            <div class="uc-title">660 UC</div>
+            <div class="price">قیمت: 3100 PKR</div>
+            <a href="https://wa.me/923001234567?text=السلام علیکم! مجھے 660 UC خریدنی ہے۔" target="_blank" class="btn-wa">واٹس ایپ پر خریدیں</a>
+        </div>
+
+        <!-- 8100 UC -->
+        <div class="card">
+            <div class="uc-title">8100 UC</div>
+            <div class="price">قیمت: 36000 PKR</div>
+            <a href="https://wa.me/923001234567?text=السلام علیکم! مجھے 8100 UC خریدنی ہے۔" target="_blank" class="btn-wa">واٹس ایپ پر خریدیں</a>
+        </div>
+    </div>
+
+    <script>
+        function copySourceCode() {
+            const fullHTML = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            navigator.clipboard.writeText(fullHTML).then(() => {
+               
+            });
+        }
+    </script>
+
+</body>
+</html>
+
+
